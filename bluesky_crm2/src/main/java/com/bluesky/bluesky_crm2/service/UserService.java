@@ -2,6 +2,8 @@ package com.bluesky.bluesky_crm2.service;
 
  
 
+import java.util.List; 
+
 import com.bluesky.bluesky_crm2.model.Users;
 
 /**
@@ -24,11 +26,15 @@ public interface UserService {
 	public Users loging( String name, String pwd);
 
 	/**
+	 * 查询所有用户
+	 */
+	public List<Users> selectAllUsers();
+	/**
 	 * 添加用户
 	 * 
 	 * @param 要添加的用户
 	 */
-	public void addUser(Users user);
+	public int addUser(Users user);
 
 	/**
 	 * 编辑用户
@@ -36,7 +42,14 @@ public interface UserService {
 	 * @param users
 	 *            要编辑的用户
 	 */
-	public void editUser(Users users);
+	public void editUser(Users user);
+	
+	/**
+	 * 通过id查询用户信息
+	 * @param id
+	 * @return
+	 */
+	public Users selectById(int id);
 
 	/**
 	 * 修改密码
@@ -44,5 +57,5 @@ public interface UserService {
 	 * @param users
 	 *            修改的用户
 	 */
-	public void modifyPwd(Users user);
+	public int modifyPwd(String pwd,String name,String password);
 }

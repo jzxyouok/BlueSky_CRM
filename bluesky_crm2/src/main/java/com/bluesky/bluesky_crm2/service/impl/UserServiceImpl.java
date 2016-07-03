@@ -1,5 +1,7 @@
 package com.bluesky.bluesky_crm2.service.impl;
 
+import java.util.List;
+ 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,23 +30,35 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Users loging(String name, String pwd) {
-		System.out.println("µ½´ï userMapper");
+		
 		return userMapper.loging(name, pwd);
 	}
 
 	@Override
-	public void addUser(Users users) {
-		userMapper.addUser(users);
+	public int addUser(Users user) {  
+		return userMapper.addUser(user);
 	}
 
 	@Override
-	public void editUser(Users users) {
-		userMapper.editUser(users);
+	public void editUser(Users user) {
+		userMapper.editUser(user);
 	}
 
 	@Override
-	public void modifyPwd(Users users) {
-		userMapper.modifyPwd(users);
+	public int modifyPwd(String pwd,String name,String password) {
+		return userMapper.modifyPwd(pwd,name,password);
+	}
+
+	@Override
+	public List<Users> selectAllUsers() {
+		return userMapper.selectAllUsers();
+		
+	}
+	
+	@Override
+	public Users selectById(int id){
+		return userMapper.selectById(id);
+		
 	}
 
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,12 +13,71 @@
     <script type="text/javascript" src="Scripts/jquery-1.7.2.js"></script>
     <script type="text/javascript" src="Scripts/jquery-ui-1.8.22.custom.min.js"></script>
     <script type="text/javascript" src="Scripts/index.js"></script>
+    <style type="text/css">
+    	#msg{
+    		width: 555px;
+    		height: 420px;
+    		font-size:30px;
+    		font-weight:bold;
+    		color:white;
+    		border: 10px solid grey;
+    		background:gray;
+    		position: fixed;
+    		top: 100px;
+    		left: 500px;
+    		z-index: 9999;
+    	}
+    	#msg form{  
+    		font-weight:bold; 
+    		position: fixed;
+    		top: 130px;
+    		left:620px;
+    	}
+    	#msg form label{
+    		margin:10px;
+    		font-size:20px;
+    		font-weight:bold;
+    	}
+    	#msg form input{
+    		width:300px;
+    		height: 40px;
+    	}
+    	#x{
+    		width: 30px;
+    		height:30px;
+    		float: right;
+    	}
+    	
+    	
+    </style>
+    <script type="text/javascript">
+    	function show(){
+    		 $("#msg").show();
+    	 }
+    	function hide(){
+   		 $("#msg").hide();
+   	 }
+    </script>
 </head>
-<body>
+<body> 
     <div class="warp">
         <!--头部开始-->
         <div class="top_c">
-                      <div class="top-nav">欢迎 刘sir！&nbsp;&nbsp;<a href="#">修改密码</a> | <a href="#">安全退出</a></div>
+               <div class="top-nav">欢迎 <a href="#">${uname}</a>, 
+              &nbsp;&nbsp;<a href="#" id="m" onclick="show()">修改密码</a> | <a href="exit">安全退出</a></div>
+        <div  id="msg">
+        	<button id="x" onclick="hide()">X</button>
+        		<form action="modifyPwd" method="post">
+        			<label>用户名：</label><input type="text" value="${uname}" name="name" readonly="readonly">
+        			<label>旧密码：</label><input type="password" name="password" placeholder="请输入您的原始密码">
+        			<label>新密码：</label><input type="password" name="pwd" pattern="\w{6,20}" placeholder="请输入6—20位数字、单词">
+        			<br><br><input id="bt" type="submit" value="确认修改">
+        		</form>
+        </div>
+        <script type="text/javascript">
+        	$("#msg").hide();
+        </script>
+        
         </div>
         <!--头部结束-->
         <!--左边菜单开始-->
@@ -29,8 +89,8 @@
                 <div>
                     <a class="one">用户管理</a>
                     <ul class="kid">
-                        <li><b class="tip"></b><a target="Conframe" href="Template/find-form.html">所有用户</a></li>
-                        <li><b class="tip"></b><a target="Conframe" href="Template/find-alert.html">添加用户</a></li>
+                        <li><b class="tip"></b><a target="Conframe" href="selectAll">所有用户</a></li>
+                        <li><b class="tip"></b><a target="Conframe" href="addUser">添加用户</a></li>
 
                     </ul>
                 </div>

@@ -25,7 +25,7 @@ public class Users {
 	/**
 	 * 电话
 	 */
-	private String phone;
+	private String tel;
 	/**
 	 * 身份证号码
 	 */
@@ -91,16 +91,16 @@ public class Users {
 	/**
 	 * @return the phone
 	 */
-	public String getPhone() {
-		return phone;
+	public String getTel() {
+		return tel;
 	}
 
 	/**
 	 * @param phone
 	 *            the phone to set
 	 */
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
 
 	/**
