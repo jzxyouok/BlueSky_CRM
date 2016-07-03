@@ -12,16 +12,41 @@
     <script type="text/javascript" src="Scripts/chur.min.js"></script>
     <link rel="stylesheet" type="text/css" href="Styles/login.css" />
     <script type="text/javascript">
+    
+    
+	var xmlreq = null;
+	if (window.XMLHttpRequest) {
+		xmlreq = new XMLHttpRequest();
+	} else if (window.ActiveXObject) {//Microsoft
+		try {
+			xmlreq = new XMLHttpRequest("Microsoft.XMLHTTP");
+		} catch (e) {
+			xmlreq = new XMLhttpRequest("Microsoft.xmlHttp");
+		}
+		
+	}
+	
+	function flush(){ 
+		xmlreq.open("get","Img", true);
+		xmlreq.send(null);
+		xmlreq.onreadystatechange= function(){
+			if(xmlreq.readyState==4 && xmlreq.status=== 200){ 
+				document.getElementById('image').src="Img"; 
+				 
+			}
+		};
+	}
+    
+    
         $(function () {
             $('#clouds').pan({ fps: 20, speed: 0.7, dir: 'right', depth: 10 });
             $('.login').click(function () {
                 if ($('#uid').val() == "" || $('#pwd').val() == "" || $('#code').val() == "") { $('.tip').html('用户名或密码不可为空！') }
-                else {
-                    location.href = 'index.html';
-                }
+                 
             })
-        })
-    </script>
+        }) 
+  
+</script> 
 </head>
 <body>
     <div id="clouds" class="stage"></div>
@@ -38,7 +63,7 @@
             <label>密&nbsp;&nbsp;&nbsp;码：<input type="password" id="pwd" name="pwd"/></label>
         </p>
         <p class="pcode">
-            <label>效验码：<input type="text" id="code" maxlength="5" class="code" value="e5g88" /><img src="img/code.gif" alt="" class="imgcode" /><a href="#">下一张</a></label>
+            <label>效验码：<input type="text" id="code" name="yzm" maxlength="5" class="code" /><img id="image" src="Img" alt="" class="imgcode" /><a onclick="flush()">下一张</a></label>
         </p>
         <p class="tip">&nbsp;</p>
         <hr />

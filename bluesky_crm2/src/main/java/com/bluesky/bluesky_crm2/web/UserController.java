@@ -41,21 +41,26 @@ public class UserController {
 	public String loginCheck(
 			@RequestParam(value = "name") String name, 
 			@RequestParam(value = "pwd") String pwd,
+			@RequestParam(value = "yzm") String yzm,
 			HttpSession session,
 			Model model) {
-		String view = null;
-		Users user = userService.loging(name, pwd);
+		String view = null; 
 		System.out.println("到达UserController.LoginCheck，用户：" + name);
-		session.setAttribute("uname", name);
-		if (user.getUlevel() == 3) {
-			view = "admin";
-		} else if (user.getUlevel() == 2) {
-			view = "areaManager";
-		} else if (user.getUlevel() == 1) {
-			view = "storeManager";
-		} else if (user.getUlevel() == 0) {
-			view = "index";
-		}
+		String code = (String) session.getAttribute("code");
+		System.out.println(code+"验证码"+":"+yzm);
+		if(yzm.equals(code)){ 
+			Users user = userService.loging(name, pwd);
+			session.setAttribute("uname", name); 
+			if (user.getUlevel() == 3) {
+				view = "admin";
+			} else if (user.getUlevel() == 2) {
+				view = "areaManager";
+			} else if (user.getUlevel() == 1) {
+				view = "storeManager";
+			} else if (user.getUlevel() == 0) {
+				view = "index";
+			}
+			}
 		return view;
 	}
 
