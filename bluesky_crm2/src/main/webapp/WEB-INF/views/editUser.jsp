@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta charset=UTF-8>
-<title>Insert title here</title>
+<title>修改用户信息</title>
 </head>
 <body>
 	<div>
-		<form action="editUs" method="post">
+		<form action="editUs" method="POST" >
 			<label>用户名：</label><input type="text" name="name" value="${user.name}" readonly="readonly">
 			<br><br><label>电话号码：</label><input type="text" name="tel" value="${user.tel}">
 			<br><br><label>身份证号码：</label><input type="text" name="idcard" value="${user.idcard}">

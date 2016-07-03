@@ -152,8 +152,15 @@ public class UserController {
 		return "editUser";
 	}
 	
-	@RequestMapping(value="/editUs",method=RequestMethod.POST)
+	/**
+	 * ÓÃ»§±à¼­
+	 * @param request
+	 * @param user
+	 * @return
+	 */
+	@RequestMapping(value="/editUser/editUs",method = RequestMethod.POST)
 	public String editUs(HttpServletRequest request,Users user){
+		System.out.println(">>>>>>>>>>>>>>>>");
 		user.setName(request.getParameter("name"));
 		user.setTel(request.getParameter("tel"));
 		user.setIdcard(request.getParameter("idcard"));

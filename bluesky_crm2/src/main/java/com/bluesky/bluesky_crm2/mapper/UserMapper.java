@@ -51,7 +51,7 @@ public interface UserMapper {
 	 */
 	@Update("update users set tel=#{user.tel},idcard=#{user.idcard},"
 	+ "store=#{user.store},state=#{user.state},ulevel=#{user.ulevel} where name=#{user.name}")
-	public void editUser(Users user);
+	public void editUser(@Param("user")Users user);
 
 	/**
 	 * ĞŞ¸ÄÃÜÂë
